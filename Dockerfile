@@ -6,6 +6,7 @@ COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy all website files to nginx default directory
 COPY index.html /usr/share/nginx/html/
+COPY pricing.html /usr/share/nginx/html/
 COPY styles.css /usr/share/nginx/html/
 COPY script.js /usr/share/nginx/html/
 COPY Kernow.png /usr/share/nginx/html/
