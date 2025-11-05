@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kernow Hub Pricing - Flexible workspace solutions in Helston, Cornwall. Pods, hot-desks, and meeting rooms.">
+    <title>Pricing - Kernow Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Pricing-specific styles */
+        .pricing-hero {
+            background: linear-gradient(135deg, var(--grey) 0%, var(--dark-grey) 100%);
+            color: var(--white);
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .pricing-hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .pricing-hero p {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .pricing-section {
+            padding: 80px 0;
+        }
+
+        .pricing-section:nth-child(even) {
+            background: var(--light-grey);
+        }
+
+        .pricing-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark-grey);
+            text-align: center;
+        }
+
+        .pricing-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--grey);
+            margin-bottom: 50px;
+        }
+
+        /* Pod Pricing Card */
+        .pod-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 3px solid var(--yellow);
+        }
+
+        .pod-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .pod-header h3 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 10px;
+        }
+
+        .pod-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 5px;
+        }
+
+        .pod-price span {
+            font-size: 24px;
+            color: var(--grey);
+            font-weight: 500;
+        }
+
+        .pod-deposit {
+            font-size: 16px;
+            color: var(--grey);
+            margin-bottom: 10px;
+        }
+
+        .pod-terms {
+            font-size: 14px;
+            color: var(--grey);
+            font-style: italic;
+        }
+
+        .pod-features {
+            list-style: none;
+            margin-top: 30px;
+        }
+
+        .pod-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+            color: var(--grey);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .pod-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pod-features li::before {
+            content: "✓";
+            color: var(--yellow);
+            font-weight: 700;
+            font-size: 20px;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .pod-features ul {
+            list-style: none;
+            margin-left: 35px;
+            margin-top: 8px;
+        }
+
+        .pod-features ul li {
+            border: none;
+            padding: 4px 0;
+            font-size: 15px;
+        }
+
+        .pod-features ul li::before {
+            content: "•";
+            color: var(--grey);
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        /* Hot-Desk Pricing Grid */
+        .hotdesk-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+        
+        .hotdesk-grid > * {
+            flex: 0 0 280px;
+        }
+
+        .hotdesk-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 35px 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .hotdesk-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .hotdesk-card.featured {
+            border: 3px solid var(--yellow);
+            position: relative;
+        }
+
+        .hotdesk-card.featured::before {
+            content: "Most Popular";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--yellow);
+            color: var(--dark-grey);
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .hotdesk-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 15px;
+        }
+
+        .hotdesk-price {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 5px;
+        }
+
+        .hotdesk-price span {
+            font-size: 18px;
+            color: var(--grey);
+            font-weight: 500;
+        }
+
+        .hotdesk-details {
+            font-size: 15px;
+            color: var(--grey);
+            margin-bottom: 25px;
+            min-height: 45px;
+        }
+
+        .hotdesk-features {
+            list-style: none;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .hotdesk-features li {
+            padding: 8px 0;
+            font-size: 14px;
+            color: var(--grey);
+        }
+
+        .hotdesk-features li::before {
+            content: "✓";
+            color: var(--yellow);
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .hotdesk-notes {
+            max-width: 900px;
+            margin: 30px auto 0;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--yellow);
+            text-align: center;
+        }
+
+        .hotdesk-notes ul {
+            list-style: none;
+            margin: 0;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .hotdesk-notes li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: var(--grey);
+        }
+
+        .hotdesk-notes li::before {
+            content: "•";
+            color: var(--yellow);
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        /* Meeting Room Table */
+        .meeting-table-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .meeting-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .meeting-table thead {
+            background: var(--dark-grey);
+            color: var(--white);
+        }
+
+        .meeting-table th {
+            padding: 20px;
+            text-align: left;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .meeting-table td {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            font-size: 16px;
+            color: var(--grey);
+        }
+
+        .meeting-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .meeting-table tbody tr:hover {
+            background: var(--light-grey);
+        }
+
+        .price-cell {
+            font-weight: 600;
+            color: var(--dark-grey);
+            font-size: 20px;
+        }
+
+        .meeting-features {
+            max-width: 800px;
+            margin: 30px auto 0;
+            background: var(--light-grey);
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .meeting-features ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .meeting-features li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: var(--grey);
+        }
+
+        .meeting-features li::before {
+            content: "✓";
+            color: var(--yellow);
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        /* Phone Booth Section */
+        .phonebooth-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .phonebooth-card h3 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 20px;
+        }
+
+        .phonebooth-card .included-badge {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--dark-grey);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .phonebooth-features {
+            list-style: none;
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .phonebooth-features li {
+            padding: 12px 0;
+            font-size: 16px;
+            color: var(--grey);
+            border-bottom: 1px solid #eee;
+        }
+
+        .phonebooth-features li:last-child {
+            border-bottom: none;
+        }
+
+        .phonebooth-features li::before {
+            content: "✓";
+            color: var(--yellow);
+            font-weight: 700;
+            margin-right: 12px;
+        }
+
+        /* General Terms */
+        .terms-section {
+            background: var(--dark-grey);
+            color: var(--white);
+            padding: 60px 0;
+        }
+
+        .terms-section h2 {
+            color: var(--white);
+            margin-bottom: 40px;
+        }
+
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .terms-grid li {
+            padding: 15px 0;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .terms-grid li::before {
+            content: "•";
+            color: var(--yellow);
+            font-weight: 700;
+            margin-right: 12px;
+            font-size: 20px;
+        }
+
+        /* CTA Section */
+        .pricing-cta {
+            background: var(--yellow);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .pricing-cta h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 20px;
+        }
+
+        .pricing-cta p {
+            font-size: 18px;
+            color: var(--grey);
+            margin-bottom: 30px;
+        }
+
+        .pricing-cta .cta-button {
+            display: inline-block;
+            background: var(--dark-grey);
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-cta .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .pricing-hero h1 {
+                font-size: 32px;
+            }
+
+            .pricing-section h2 {
+                font-size: 28px;
+            }
+
+            .pod-card {
+                padding: 30px 20px;
+            }
+
+            .pod-price {
+                font-size: 36px;
+            }
+
+            .hotdesk-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .meeting-table-wrapper {
+                overflow-x: auto;
+            }
+
+            .meeting-table th,
+            .meeting-table td {
+                padding: 15px 10px;
+                font-size: 14px;
+            }
+
+            .terms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Kernow.png" alt="Kernow Hub Logo">
+                </a>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="index.html#contact" class="cta-button">Register Interest</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Pricing Hero -->
+    <section class="pricing-hero">
+        <div class="container">
+            <h1>Flexible Workspace Pricing</h1>
+            <p>Choose the perfect workspace solution for your needs. All prices shown exclude VAT.</p>
+        </div>
+    </section>
+
+    <!-- Pods Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2>Private Lockable Pods</h2>
+            <p class="pricing-subtitle">Your own secure workspace with premium amenities</p>
+            
+            <div class="pod-card">
+                <div class="pod-header">
+                    <h3>Pod Membership</h3>
+                    <div class="pod-price">£325<span> + VAT/month</span></div>
+                    <div class="pod-deposit">£325 refundable deposit required</div>
+                    <div class="pod-terms">Rolling monthly contract • 30-day notice • Payable in advance</div>
+                </div>
+                
+                <ul class="pod-features">
+                    <li>Wi-Fi access</li>
+                    <li>Kitchen & breakout area access</li>
+                    <li>Unlimited tea, coffee and biscuits</li>
+                    <li>Basic printing at reception</li>
+                    <li>Reception sign-in/out</li>
+                    <li>3 hours of meeting room use per month (non-rollover)
+                        <ul>
+                            <li>Up to 10-person room</li>
+                            <li>Bookable in 1-hour blocks</li>
+                            <li>Additional time billed at standard rates</li>
+                        </ul>
+                    </li>
+                    <li>Phone booth access included
+                        <ul>
+                            <li>Up to 30 minutes per session</li>
+                            <li>No booking required</li>
+                            <li>Available if empty, subject to fair use policy</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hot-Desk Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2>Hot-Desk Options</h2>
+            <p class="pricing-subtitle">Flexible day passes and memberships for on-demand workspace</p>
+            
+            <div class="hotdesk-grid">
+                <div class="hotdesk-card">
+                    <h3>Single Day</h3>
+                    <div class="hotdesk-price">£25<span> + VAT</span></div>
+                    <div class="hotdesk-details">One full day access<br>8:30 AM – 5:30 PM</div>
+                    <ul class="hotdesk-features">
+                        <li>Wi-Fi access</li>
+                        <li>Kitchen & refreshments</li>
+                        <li>10% off meeting rooms</li>
+                        <li>Phone booth access</li>
+                    </ul>
+                </div>
+
+                <div class="hotdesk-card">
+                    <h3>3-Day Pack</h3>
+                    <div class="hotdesk-price">£60<span> + VAT</span></div>
+                    <div class="hotdesk-details">Any 3 weekdays<br>Use within 30 days</div>
+                    <ul class="hotdesk-features">
+                        <li>Wi-Fi access</li>
+                        <li>Kitchen & refreshments</li>
+                        <li>10% off meeting rooms</li>
+                        <li>Phone booth access</li>
+                    </ul>
+                </div>
+
+                <div class="hotdesk-card">
+                    <h3>5-Day Pack</h3>
+                    <div class="hotdesk-price">£75<span> + VAT</span></div>
+                    <div class="hotdesk-details">Any 5 weekdays<br>Use within 30 days</div>
+                    <ul class="hotdesk-features">
+                        <li>Wi-Fi access</li>
+                        <li>Kitchen & refreshments</li>
+                        <li>10% off meeting rooms</li>
+                        <li>Phone booth access</li>
+                    </ul>
+                </div>
+
+                <div class="hotdesk-card">
+                    <h3>10-Day Pack</h3>
+                    <div class="hotdesk-price">£125<span> + VAT</span></div>
+                    <div class="hotdesk-details">Any 10 weekdays<br>Use within 30 days</div>
+                    <ul class="hotdesk-features">
+                        <li>Wi-Fi access</li>
+                        <li>Kitchen & refreshments</li>
+                        <li>10% off meeting rooms</li>
+                        <li>Phone booth access</li>
+                    </ul>
+                </div>
+
+                <div class="hotdesk-card featured">
+                    <h3>Full-Time Hot-Desk</h3>
+                    <div class="hotdesk-price">£225<span> + VAT/month</span></div>
+                    <div class="hotdesk-details">Unlimited weekday access<br>Flexible seating</div>
+                    <ul class="hotdesk-features">
+                        <li>Wi-Fi access</li>
+                        <li>Kitchen & refreshments</li>
+                        <li>10% off meeting rooms</li>
+                        <li>Phone booth access</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="hotdesk-notes">
+                <ul>
+                    <li>All passes must be used within 30 days of purchase</li>
+                    <li>Non-transferable and non-refundable</li>
+                    <li>Day-pass users receive 10% off meeting room bookings</li>
+                    <li>Phone booth access included (30-minute sessions, fair-use policy)</li>
+                    <li>Full-time hot-desk membership does not include free meeting room time</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meeting Room Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2>Meeting Room</h2>
+            <p class="pricing-subtitle">Professional space for up to 10 people</p>
+            
+            <div class="meeting-table-wrapper">
+                <table class="meeting-table">
+                    <thead>
+                        <tr>
+                            <th>Duration</th>
+                            <th>Price (+ VAT)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Hourly</td>
+                            <td class="price-cell">£25</td>
+                        </tr>
+                        <tr>
+                            <td>Half-Day (9:00–1:00 or 1:30–5:30)</td>
+                            <td class="price-cell">£70</td>
+                        </tr>
+                        <tr>
+                            <td>Full-Day (9:00–5:30)</td>
+                            <td class="price-cell">£130</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="meeting-features">
+                <ul>
+                    <li>55″ TV included</li>
+                    <li>Whiteboard & pens</li>
+                    <li>Catering available (quoted separately)</li>
+                    <li>10% discount for Kernow Hub members</li>
+                    <li>Pod users: first 3 hours/month free</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Phone Booth Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2>Phone Booths</h2>
+            <p class="pricing-subtitle">Private call space for all members</p>
+            
+            <div class="phonebooth-card">
+                <h3>Phone Booth Access</h3>
+                <div class="included-badge">Included for All Members</div>
+                
+                <ul class="phonebooth-features">
+                    <li>Access included for all members and day-pass users</li>
+                    <li>Maximum 30 minutes per session</li>
+                    <li>No booking required – available when empty</li>
+                    <li>Subject to fair-use policy</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- General Terms -->
+    <section class="terms-section">
+        <div class="container">
+            <h2>General Terms</h2>
+            <ul class="terms-grid">
+                <li>Opening hours: Monday–Friday, 8:30–5:30</li>
+                <li>All prices exclude VAT</li>
+                <li>All bookings subject to availability</li>
+                <li>Reception sign-in/out required</li>
+                <li>Cancellations within 24 hours are non-refundable</li>
+                <li>No rollover of unused credits or hours</li>
+                <li>Refundable deposits held securely and returned at end of contract</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="pricing-cta">
+        <div class="container">
+            <h2>Ready to Join Kernow Hub?</h2>
+            <p>Register your interest today and be the first to know when we open in January 2026</p>
+            <a href="index.html#contact" class="cta-button">Register Your Interest</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kernow Hub</h3>
+                    <p>Water Ma Trout, Helston, Cornwall</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Opening</h3>
+                    <p>January 2026</p>
+                </div>
+                <div class="footer-section">
+                    <h3>By</h3>
+                    <p>Kernow Accountancy</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Kernow Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
