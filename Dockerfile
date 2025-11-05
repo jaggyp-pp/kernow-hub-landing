@@ -7,11 +7,8 @@ COPY styles.css /usr/share/nginx/html/
 COPY script.js /usr/share/nginx/html/
 COPY Kernow.png /usr/share/nginx/html/
 
-# Copy custom nginx configuration for port 3000
-COPY nginx-3000.conf /etc/nginx/conf.d/default.conf
+# Nginx runs on port 80 by default
+EXPOSE 80
 
-# Expose port 3000
-EXPOSE 3000
-
-# Start nginx
+# Start nginx in foreground
 CMD ["nginx", "-g", "daemon off;"]
