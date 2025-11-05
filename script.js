@@ -1,3 +1,44 @@
+// Promotional Modal
+document.addEventListener('DOMContentLoaded', function() {
+    const promoModal = document.getElementById('promoModal');
+    const closePromo = document.getElementById('closePromo');
+    const promoCta = document.getElementById('promoCta');
+    
+    // Check if modal has been shown before
+    const hasSeenPromo = localStorage.getItem('hasSeenPromo');
+    
+    if (promoModal && !hasSeenPromo) {
+        // Show modal after 1 second
+        setTimeout(() => {
+            promoModal.classList.add('show');
+        }, 1000);
+        
+        // Close modal when X is clicked
+        if (closePromo) {
+            closePromo.addEventListener('click', function() {
+                promoModal.classList.remove('show');
+                localStorage.setItem('hasSeenPromo', 'true');
+            });
+        }
+        
+        // Close modal when CTA is clicked
+        if (promoCta) {
+            promoCta.addEventListener('click', function() {
+                promoModal.classList.remove('show');
+                localStorage.setItem('hasSeenPromo', 'true');
+            });
+        }
+        
+        // Close modal when clicking outside
+        promoModal.addEventListener('click', function(e) {
+            if (e.target === promoModal) {
+                promoModal.classList.remove('show');
+                localStorage.setItem('hasSeenPromo', 'true');
+            }
+        });
+    }
+});
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

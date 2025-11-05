@@ -151,21 +151,24 @@
         /* Hot-Desk Pricing Grid */
         .hotdesk-grid {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             justify-content: center;
-            gap: 30px;
-            max-width: 1200px;
+            gap: 15px;
+            max-width: 100%;
             margin: 0 auto 40px;
+            padding: 0 10px;
         }
         
         .hotdesk-grid > * {
-            flex: 0 0 280px;
+            flex: 1 1 0;
+            max-width: 220px;
+            min-width: 180px;
         }
 
         .hotdesk-card {
             background: var(--white);
             border-radius: 12px;
-            padding: 35px 25px;
+            padding: 30px 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
@@ -181,30 +184,44 @@
         }
 
         .hotdesk-card h3 {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--dark-grey);
             margin-bottom: 15px;
+            min-height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
         }
 
         .hotdesk-price {
-            font-size: 42px;
+            font-size: 38px;
             font-weight: 700;
             color: var(--dark-grey);
             margin-bottom: 5px;
+            min-height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .hotdesk-price span {
             font-size: 18px;
             color: var(--grey);
             font-weight: 500;
+            white-space: nowrap;
         }
 
         .hotdesk-details {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--grey);
             margin-bottom: 25px;
-            min-height: 45px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hotdesk-features {
@@ -214,12 +231,84 @@
         }
 
         .hotdesk-features li {
-            padding: 8px 0;
-            font-size: 14px;
+            padding: 6px 0;
+            font-size: 13px;
             color: var(--grey);
         }
 
         .hotdesk-features li::before {
+            content: "✓";
+            color: var(--yellow);
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        /* Full-Time Hot-Desk Card */
+        .fulltime-card {
+            max-width: 900px;
+            margin: 30px auto;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 2px solid var(--yellow);
+        }
+
+        .fulltime-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .fulltime-header {
+            flex-shrink: 0;
+            text-align: center;
+            padding-right: 40px;
+            border-right: 2px solid var(--light-grey);
+        }
+
+        .fulltime-header h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 10px;
+        }
+
+        .fulltime-price {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--dark-grey);
+        }
+
+        .fulltime-price span {
+            font-size: 18px;
+            color: var(--grey);
+            font-weight: 500;
+        }
+
+        .fulltime-details {
+            flex: 1;
+        }
+
+        .fulltime-details p {
+            font-size: 16px;
+            color: var(--grey);
+            margin-bottom: 15px;
+        }
+
+        .fulltime-features {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .fulltime-features li {
+            font-size: 14px;
+            color: var(--grey);
+        }
+
+        .fulltime-features li::before {
             content: "✓";
             color: var(--yellow);
             font-weight: 700;
@@ -476,6 +565,26 @@
             }
 
             .hotdesk-grid {
+                flex-wrap: wrap;
+            }
+            
+            .hotdesk-grid > * {
+                flex: 0 0 100%;
+            }
+
+            .fulltime-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .fulltime-header {
+                padding-right: 0;
+                border-right: none;
+                padding-bottom: 20px;
+                border-bottom: 2px solid var(--light-grey);
+            }
+
+            .fulltime-features {
                 grid-template-columns: 1fr;
             }
 
@@ -523,7 +632,7 @@
     <!-- Pods Section -->
     <section class="pricing-section">
         <div class="container">
-            <h2>Private Lockable Pods</h2>
+            <h2>Private Pods</h2>
             <p class="pricing-subtitle">Your own secure workspace with premium amenities</p>
             
             <div class="pod-card">
@@ -614,16 +723,23 @@
                     </ul>
                 </div>
 
-                <div class="hotdesk-card">
-                    <h3>Full-Time Hot-Desk</h3>
-                    <div class="hotdesk-price">£225<span> + VAT/month</span></div>
-                    <div class="hotdesk-details">Unlimited weekday access<br>Flexible seating</div>
-                    <ul class="hotdesk-features">
-                        <li>Wi-Fi access</li>
-                        <li>Kitchen & refreshments</li>
-                        <li>10% off meeting rooms</li>
-                        <li>Phone booth access</li>
-                    </ul>
+            </div>
+
+            <div class="fulltime-card">
+                <div class="fulltime-content">
+                    <div class="fulltime-header">
+                        <h3>Full-Time Hot-Desk</h3>
+                        <div class="fulltime-price">£225<span> + VAT/month</span></div>
+                    </div>
+                    <div class="fulltime-details">
+                        <p>Unlimited weekday access with flexible seating</p>
+                        <ul class="fulltime-features">
+                            <li>Wi-Fi access</li>
+                            <li>Kitchen & refreshments</li>
+                            <li>10% off meeting rooms</li>
+                            <li>Phone booth access</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
@@ -633,7 +749,6 @@
                     <li>Non-transferable and non-refundable</li>
                     <li>Day-pass users receive 10% off meeting room bookings</li>
                     <li>Phone booth access included (30-minute sessions, fair-use policy)</li>
-                    <li>Full-time hot-desk membership does not include free meeting room time</li>
                 </ul>
             </div>
         </div>
