@@ -1,14 +1,18 @@
-# Use nginx alpine for a lightweight web server
-FROM nginx:alpine
+# Static site deployment for Kernow Hub Landing Page
+FROM nginx:1.25-alpine
 
-# Copy the website files to nginx html directory
+# Copy custom nginx configuration
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Copy all website files to nginx default directory
 COPY index.html /usr/share/nginx/html/
 COPY styles.css /usr/share/nginx/html/
 COPY script.js /usr/share/nginx/html/
 COPY Kernow.png /usr/share/nginx/html/
 
-# Nginx runs on port 80 by default
+# Expose port
 EXPOSE 80
 
-# Start nginx in foreground
-CMD ["nginx", "-g", "daemon off;"]
+# Healthcheck
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD wget -qO- http://127.0.0.1/ >/dev/null 2>&1 || exit 1
