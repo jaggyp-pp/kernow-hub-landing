@@ -90,6 +90,12 @@
             font-weight: 500;
         }
 
+        .pod-price .from-text {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--grey);
+        }
+
         .pod-deposit {
             font-size: 16px;
             color: var(--grey);
@@ -146,6 +152,36 @@
             color: var(--grey);
             font-size: 16px;
             margin-right: 10px;
+        }
+
+        /* Memberships Grid */
+        .memberships-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Accessibility Note */
+        .accessibility-note {
+            max-width: 1200px;
+            margin: 30px auto 0;
+            padding: 20px 30px;
+            background: var(--light-grey);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .accessibility-note p {
+            font-size: 15px;
+            color: var(--grey);
+            margin: 0;
+        }
+
+        .accessibility-note strong {
+            color: var(--dark-grey);
+            font-weight: 600;
         }
 
         /* Hot-Desk Pricing Grid */
@@ -546,6 +582,127 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
+        /* Promotional Modal */
+        .promo-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .promo-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .promo-modal-content {
+            background: var(--white);
+            padding: 50px 40px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .promo-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 32px;
+            font-weight: 300;
+            color: var(--grey);
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            line-height: 1;
+        }
+
+        .promo-close:hover {
+            color: var(--dark-grey);
+        }
+
+        .promo-badge {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--dark-grey);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .promo-modal-content h2 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark-grey);
+            margin-bottom: 20px;
+        }
+
+        .promo-text {
+            font-size: 18px;
+            color: var(--grey);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .promo-text strong {
+            color: var(--dark-grey);
+            font-weight: 700;
+            font-size: 22px;
+        }
+
+        .promo-cta {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--dark-grey);
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .promo-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(253, 222, 19, 0.4);
+        }
+
+        .promo-terms {
+            font-size: 12px;
+            color: var(--grey);
+            font-style: italic;
+            margin-top: 15px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .pricing-hero h1 {
@@ -554,6 +711,10 @@
 
             .pricing-section h2 {
                 font-size: 28px;
+            }
+
+            .memberships-grid {
+                grid-template-columns: 1fr;
             }
 
             .pod-card {
@@ -601,6 +762,18 @@
             .terms-grid {
                 grid-template-columns: 1fr;
             }
+
+            .promo-modal-content {
+                padding: 40px 25px;
+            }
+
+            .promo-modal-content h2 {
+                font-size: 28px;
+            }
+
+            .promo-text {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -629,50 +802,67 @@
         </div>
     </section>
 
-    <!-- Pods Section -->
+    <!-- Memberships Section -->
     <section class="pricing-section">
         <div class="container">
-            <h2>Private Pods</h2>
-            <p class="pricing-subtitle">Your own secure workspace with premium amenities</p>
+            <h2>Memberships</h2>
+            <p class="pricing-subtitle">Monthly rolling contracts with premium amenities</p>
             
+            <div class="memberships-grid">
             <div class="pod-card">
                 <div class="pod-header">
-                    <h3>Pod Membership</h3>
-                    <div class="pod-price">£325<span> + VAT/month</span></div>
+                    <h3>Private Pod</h3>
+                    <div class="pod-price"><span class="from-text">from</span> £325<span> + VAT/month</span></div>
                     <div class="pod-deposit">£325 refundable deposit required</div>
                     <div class="pod-terms">Rolling monthly contract • 30-day notice • Payable in advance</div>
                 </div>
                 
                 <ul class="pod-features">
+                    <li>Your own private workspace - your home away from home</li>
+                    <li>Personal desk and chair in your dedicated space</li>
+                    <li>Leave your things where they are - it's your pod for the duration of your membership</li>
+                    <li>Lockable drawer for secure storage</li>
+                    <li>Unlimited weekday access (8:30 AM - 5:30 PM)</li>
                     <li>Wi-Fi access</li>
                     <li>Kitchen & breakout area access</li>
                     <li>Unlimited tea, coffee and biscuits</li>
                     <li>Basic printing at reception</li>
                     <li>Reception sign-in/out</li>
-                    <li>3 hours of meeting room use per month (non-rollover)
-                        <ul>
-                            <li>Up to 10-person room</li>
-                            <li>Bookable in 1-hour blocks</li>
-                            <li>Additional time billed at standard rates</li>
-                        </ul>
-                    </li>
-                    <li>Phone booth access included
-                        <ul>
-                            <li>Up to 30 minutes per session</li>
-                            <li>No booking required</li>
-                            <li>Available if empty, subject to fair use policy</li>
-                        </ul>
-                    </li>
+                    <li>3 hours meeting room use per month (10-person room)</li>
                 </ul>
+            </div>
+
+            <div class="pod-card">
+                <div class="pod-header">
+                    <h3>Full-Time Hot-Desk</h3>
+                    <div class="pod-price">£225<span> + VAT/month</span></div>
+                    <div class="pod-deposit">£225 refundable deposit required</div>
+                    <div class="pod-terms">Rolling monthly contract • 30-day notice • Payable in advance</div>
+                </div>
+                
+                <ul class="pod-features">
+                    <li>Unlimited weekday access with flexible seating (8:30 AM - 5:30 PM)</li>
+                    <li>Wi-Fi access</li>
+                    <li>Kitchen & breakout area access</li>
+                    <li>Unlimited tea, coffee and biscuits</li>
+                    <li>Basic printing at reception</li>
+                    <li>Reception sign-in/out</li>
+                    <li>3 hours meeting room use per month (10-person room)</li>
+                </ul>
+            </div>
+            </div>
+            
+            <div class="accessibility-note">
+                <p><strong>Accessibility:</strong> Kernow Hub is fully wheelchair accessible with disability-friendly facilities. Please contact us to discuss your specific requirements.</p>
             </div>
         </div>
     </section>
 
-    <!-- Hot-Desk Section -->
+    <!-- Hot-Desk Day Passes Section -->
     <section class="pricing-section">
         <div class="container">
-            <h2>Hot-Desk Options</h2>
-            <p class="pricing-subtitle">Flexible day passes and memberships for on-demand workspace</p>
+            <h2>Hot-Desk Day Passes</h2>
+            <p class="pricing-subtitle">Flexible day passes for on-demand workspace</p>
             
             <div class="hotdesk-grid">
                 <div class="hotdesk-card">
@@ -723,24 +913,6 @@
                     </ul>
                 </div>
 
-            </div>
-
-            <div class="fulltime-card">
-                <div class="fulltime-content">
-                    <div class="fulltime-header">
-                        <h3>Full-Time Hot-Desk</h3>
-                        <div class="fulltime-price">£225<span> + VAT/month</span></div>
-                    </div>
-                    <div class="fulltime-details">
-                        <p>Unlimited weekday access with flexible seating</p>
-                        <ul class="fulltime-features">
-                            <li>Wi-Fi access</li>
-                            <li>Kitchen & refreshments</li>
-                            <li>10% off meeting rooms</li>
-                            <li>Phone booth access</li>
-                        </ul>
-                    </div>
-                </div>
             </div>
 
             <div class="hotdesk-notes">
@@ -864,6 +1036,18 @@
             </div>
         </div>
     </footer>
+
+    <!-- Promotional Modal -->
+    <div id="promoModal" class="promo-modal">
+        <div class="promo-modal-content">
+            <button class="promo-close" id="closePromo">&times;</button>
+            <div class="promo-badge">Limited Time Offer</div>
+            <h2>Early Bird Special!</h2>
+            <p class="promo-text">Register your interest before the end of December and receive <strong>10% off</strong> your first month's membership.</p>
+            <a href="index.html#contact" class="promo-cta" id="promoCta">Register Now</a>
+            <p class="promo-terms">*Offer valid for registrations before December 31st, 2025</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
